@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<div class="profile">
+<center>
+<div class='head'>{{user.first_name}} {{user.last_name}}</div>
+</center>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width:150px;">
+<pre>
+
+    
+Image:      <input type="file" name='image'>
+
+Email:      <input type="text" value='{{ user.email }}' disabled>
+
+Phone:      <input type="text" value='{{ pro.phone }}' name='phone'>
+
+Working at: <input type="text" value='{{ pro.workat }}' name='work'>
+
+Branch:<select name="branch">
+    <option value="CSE">CSE</option>
+    <option value="MECH">MECH</option>
+    <option value="IT">IT</option>
+    <option value="EEP">EEP</option>
+    <option value="ENTC">ENTC</option>
+    <option value="ARCH">ARCH</option>
+    <option value="MCA">MCA</option>
+    <option value="INST">INST</option>
+    <option value="PROD">PROD</option>
+    <option value="CHEM">CHEM</option>
+</select>    Passout Year:   <select name="passout">
+    {% for y in years %}
+    <option value="{{y}}">{{y}}</option>
+    {%endfor%}
+    </select>
+
+Date of Birth:   <select name='d'>
+        {% for y in d %}
+        <option value="{{y}}">{{y}}</option>
+        {%endfor%}   
+    </select> <select name="m">
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+          </select> <select name='y'>
+        {% for y in y %}
+        <option value="{{y}}">{{y}}</option>
+        {%endfor%}   
+    </select>
+<br>
+</pre>
+<input type="submit" value="Update" class='smbtn'>
+            </form>
+    
+</div>
+{% endblock %}

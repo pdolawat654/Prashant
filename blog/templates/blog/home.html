@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<center>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div style="display: inline-block;width: 600px;margin-top: 10px;">
+        <textarea name='content' placeholder="Type something..." style='width: 100%;height: 60px;'></textarea><br>
+        <input type="file" name='image' style="float:left;border: none;">
+        <input type="submit" value="POST" id='a' style="float:right;width: 100px;background-color: purple;color: white;border: none;display: inline-block;">
+        </div>
+    </form>
+</center>
+{% for b in blog %}
+<center>
+<div style="height: 500px; width: 600px;padding-top:2% ;">
+<div style="width: 600px;">
+<img src='{{ b.profile.image.url }}' style="height: 40px;width: 40px;border-radius: 50%;float: left;"/>
+<h3 style="padding-left:5px;float: left;">{{ b.profile.user.first_name }} {{ b.profile.user.last_name }}</h3>
+<h3 style="float:right;">{{ b.date|date:"F d Y" }}</h3>
+</div>
+<img src='{{b.image.url}}' style="height: 400px;width: 600px;"/>
+<div style="height: 10%;width: 600px; border: 1px solid black;">
+<h3>{{ b.content }}</h3>
+</div>
+</div>
+</center>
+
+{% endfor %}
+{% endblock %}

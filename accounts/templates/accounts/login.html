@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <form method='POST'>
+            {% csrf_token %}
+            <input type="email" placeholder="Email" name="email">
+            <input type="password" placeholder="Password" name="password">
+            <input type="submit"> 
+
+        </form>
+        {% for m in messages %}
+        {{ m }}
+        {% endfor %}
+    </body>
+</html>
