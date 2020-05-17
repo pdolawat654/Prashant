@@ -52,7 +52,7 @@ def login(request):
             auth.login(request, user)
             pro=Profile.objects.filter(user=user).first()
             if pro.verify=='0':
-                return redirect('verify')
+                return redirect('home')
             else:
                 return redirect('uprofile')
         else:
@@ -126,7 +126,8 @@ def profile(request):
 @login_required
 def verify(request):
     pro=Profile.objects.filter(user=request.user).first()
-    if request.method=='POST':
+    if request.method=='POST' and request.POST.get('submit1')=='Submit':
+        request.POST
         o=request.POST['otp']
         if pro.otp==o:
             pro.verify='1'
@@ -135,7 +136,12 @@ def verify(request):
         else:
             messages.info(request,"Invalid OTP!")
             return redirect('verify')
+    elif request.method=='POST' and request.POST.get('resend')=='Resend OTP':
+        o=str(random.randint(100000,999999))
+        fname=pro.user.first_name
+        email=pro.user.username
+        pro.otp=o
+        pro.save()
+        m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
+        send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=False)
     return render(request,'accounts/verify.html')
-
-
-
