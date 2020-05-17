@@ -1,15 +1,42 @@
 <html>
     <head>
         <title>Login</title>
+        <style>
+            form{
+                position: fixed;
+                right: 0;
+                top:0;
+                float: right;
+                width: 25%;
+                height:99%;
+                font-weight: bold;
+                border: 2px solid black;
+            }
+            input{
+                border: 2px solid black;
+                width: 250px;
+                margin: 10px;
+                text-align: center;
+                font-size: 15px;
+                height: 35px;
+                border-radius: 4px;
+            }
+            input:hover{
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
+        <center>
         <form method='POST'>
+            <h1> Login </h1>
             {% csrf_token %}
-            <input type="email" placeholder="Email" name="email">
-            <input type="password" placeholder="Password" name="password">
-            <input type="submit"> 
+            <input type="email" placeholder="Email" name="email"><br>
+            <input type="password" placeholder="Password" name="password"><br>
+            <input type="submit" style="background-color: green;width: 150px;color: white;border: none;border-radius: 25px;font-weight: bold;" value="Login">
 
         </form>
+        </center>
         {% for m in messages %}
         {{ m }}
         {% endfor %}
