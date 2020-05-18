@@ -7,7 +7,7 @@
             }
             form{
                 margin-top: 100px;
-                width: 25%;
+                width: 35%;
                 top: 50%;
                 font-weight: bold;
                 padding: 10px;
@@ -33,7 +33,7 @@
     <body>
         <center>
         <form method='POST'>
-            
+
             <h1 style="color: white;font-family: Arial;"> Sign In </h1>
             {% csrf_token %}
             <input type="email" placeholder="Email" name="email"><br>
@@ -43,7 +43,7 @@
         <p style="color: white;width: 250px;background-color: red;">{{m}}</p>
         {% endfor %}
             <input type="submit" style="background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;" value="Login">
-            
+
         </form>
     </center>
     </body>

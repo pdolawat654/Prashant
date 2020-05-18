@@ -32,10 +32,10 @@ def register(request):
             else:
                 user=User.objects.create_user(first_name=fname,last_name=lname,username=email,password=pass1,email=email)
                 o=str(random.randint(100000,999999))
-                pro=Profile(user=user,phone=phone,otp=o)                
+                pro=Profile(user=user,phone=phone,otp=o)
                 pro.save()
                 m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
-                send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=False)
+                send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=True)
                 messages.info(request,"Account Created Successfully")
                 return redirect('login')
         else:
@@ -52,7 +52,7 @@ def login(request):
             auth.login(request, user)
             pro=Profile.objects.filter(user=user).first()
             if pro.verify=='0':
-                return redirect('home')
+                return redirect('verify')
             else:
                 return redirect('uprofile')
         else:
@@ -127,7 +127,6 @@ def profile(request):
 def verify(request):
     pro=Profile.objects.filter(user=request.user).first()
     if request.method=='POST' and request.POST.get('submit1')=='Submit':
-        request.POST
         o=request.POST['otp']
         if pro.otp==o:
             pro.verify='1'
@@ -143,5 +142,6 @@ def verify(request):
         pro.otp=o
         pro.save()
         m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
-        send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=False)
+        send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=True)
+        return redirect('verify')
     return render(request,'accounts/verify.html')

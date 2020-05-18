@@ -1,29 +1,21 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-
-<div class="profile">
 <center>
 <div class='head'>{{user.first_name}} {{user.last_name}}</div>
+<div class="profile">
+<br>
+<center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width: 150px;"></center>
+<table>
+<tr><th>Email:</th><th>{{ user.email }}</th></tr>
+<tr><th>Phone:</th><th> {{ pro.phone }}</th></tr>
+<tr><th>Working at:</th><th> {{ pro.workat }}</th></tr>
+<tr><th>Branch:</th><th>{{pro.branch}}</th></tr>
+<tr><th>Passout Year:</th><th>{{pro.passout}}</th></tr>
+<tr><th>Date of Birth:</th><th>{{pro.dob}}</th></tr>
+</table>
+<a href="{% url 'uprofile' %}"><input type="submit" style='margin:20px;font-size:18px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;' value="Update Profile"></a>
+</div>
 </center>
 
-<center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width: 150px;"></center>
-<pre>
-
-    
-    Email:          {{ user.email }}
-
-    Phone:          {{ pro.phone }}
-
-    Working at:     {{ pro.workat }}
-
-    Branch:         {{pro.branch}}
-
-    Passout Year:   {{pro.passout}}
-
-    Date of Birth:  {{pro.dob}}
-<br>
-</pre>
-<a href="{% url 'uprofile' %}"><input type="submit" class="smbtn" value="Update Profile"></a>
-</div>
 {% endblock %}
