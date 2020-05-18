@@ -1,26 +1,22 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-
-<div class="profile">
 <center>
-<div class='head'>{{user.first_name}} {{user.last_name}}</div>
-</center>
+<div class="profile">
+    <div style="font-size: 20px;font-family: arial;font-style: initial;background-color: blue;color: white;padding: 10px;">{{user.first_name}} {{user.last_name}}</div>
 <form method="POST" enctype="multipart/form-data">
 {% csrf_token %}
-<center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width:150px;">
-<pre>
+<img src='{{ pro.image.url }}' class='propic' style="height: 150px;width:150px;margin-top: 5px;">
+<table>    
+<tr><th>Image:</th><th><input type="file" name='image'></th></tr>
 
-    
-Image:      <input type="file" name='image'>
+<tr><th>Email:</th><th><input type="text" value='{{ user.email }}' disabled></th></tr>
 
-Email:      <input type="text" value='{{ user.email }}' disabled>
+<tr><th>Phone:</th><th><input type="text" value='{{ pro.phone }}' name='phone'></th></tr>
 
-Phone:      <input type="text" value='{{ pro.phone }}' name='phone'>
+<tr><th>Working at:</th><th><input type="text" value='{{ pro.workat }}' name='work'></th></tr>
 
-Working at: <input type="text" value='{{ pro.workat }}' name='work'>
-
-Branch:<select name="branch">
+<tr><th>Branch:</th><th><select name="branch">
     <option value="CSE">CSE</option>
     <option value="MECH">MECH</option>
     <option value="IT">IT</option>
@@ -31,13 +27,14 @@ Branch:<select name="branch">
     <option value="INST">INST</option>
     <option value="PROD">PROD</option>
     <option value="CHEM">CHEM</option>
-</select>    Passout Year:   <select name="passout">
+</select></th></tr> 
+<tr><th>Passout Year:</th><th><select name="passout">
     {% for y in years %}
     <option value="{{y}}">{{y}}</option>
     {%endfor%}
-    </select>
+    </select></th></tr>
 
-Date of Birth:   <select name='d'>
+    <tr><th>Date of Birth:</th><th><select name='d'>
         {% for y in d %}
         <option value="{{y}}">{{y}}</option>
         {%endfor%}   
@@ -59,10 +56,11 @@ Date of Birth:   <select name='d'>
         <option value="{{y}}">{{y}}</option>
         {%endfor%}   
     </select>
-<br>
-</pre>
-<input type="submit" value="Update" class='smbtn'>
-            </form>
+</th></tr>
+</table>
+<input type="submit" value="Update" style='width:300px;margin:10px;font-size:18px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;'>
+</form>
     
 </div>
+</center>
 {% endblock %}
