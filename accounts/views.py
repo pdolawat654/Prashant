@@ -151,6 +151,7 @@ def verify(request):
         o=str(random.randint(100000,999999))
         fname=pro.user.first_name
         email=pro.user.username
+        phone=pro.phone
         pro.otp=o
         pro.save()
         m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
