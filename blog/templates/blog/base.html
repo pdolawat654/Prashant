@@ -137,14 +137,18 @@
                 <a href="{% url 'logout' %}"><button style="float: right;">Logout</button></a>
                 <a href="{% url 'uprofile' %}"><button style="float: right;">Update Profile</button></a>
             </div>
-            <div class="left"></div>
+            <div class="left">
+                <center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width:150px;margin-top: 5px;"></center>
+            </div>
         <div class='main'>
                {% block content %}
 
 
                 {% endblock %}
         </div>
-        {% ifnotequal request.path "/search/" %}
+        {% with name="/search" %}
+        {% ifnotequal request.path name%}
+        
         <div class="right">
             <form method="GET">
                 {% csrf_token %}
@@ -161,5 +165,6 @@
             {%endfor%}
         </div>
         {% endifnotequal %}
+        {% endwith %}
     </body>
 </html>
