@@ -4,11 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib import messages
 import datetime
-from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
 import random
 import requests
-import json
 
 URL = 'https://www.sms4india.com/api/v1/sendCampaign'
 
@@ -49,7 +47,7 @@ def register(request):
                 pro.save()
                 m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
                 send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=True)
-                sendPostRequest(URL, 'QXZWRCJ0C6M2FAQRE4HXW5OUV8JCUAHK', 'VRG735PGEY8UFO92', 'stage', phone, 'JNECAL', m )
+                sendPostRequest(URL, '9DP4N6S7J555W4TWM72E5X10E8FM6Z04', '7L5JPGHL49QZAWTK', 'prod', phone, 'JNECAL', m )
                 messages.info(request,"Account Created Successfully")
                 return redirect('login')
         else:

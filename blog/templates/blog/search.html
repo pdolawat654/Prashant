@@ -2,27 +2,20 @@
 
 {% block content %}
 
-<div class="profile">
 <center>
-<div class='head'>{{search.user.first_name}} {{search.user.last_name}}</div>
-</center>
+<div class="profile">
+<div style="font-size: 20px;font-family: arial;font-style: initial;background-color: indigo;color: white;padding: 5px;">{{search.user.first_name}} {{search.user.last_name}}</div>
 
 <center><img src='{{ search.image.url }}' class='propic' style="height: 40%;width: 40%;"></center>
-<pre>
-
-    
-    Email:          {{ search.user.email }}
-
-    Phone:          {{ search.phone }}
-
-    Working at:     {{ search.workat }}
-
-    Branch:         {{search.branch}}
-
-    Passout Year:   {{search.passout}}
-
-    Date of Birth:  {{search.dob}}
-<br>
-</pre>
+<table>
+<tr><th>Email:</th><th>{{ search.user.email }}</th></tr>
+<tr><th>Phone:</th><th> {{ search.phone }}</th></tr>
+<tr><th>Working at:</th><th> {{ search.workat }}</th></tr>
+<tr><th>Branch:</th><th>{{search.branch}}</th></tr>
+<tr><th>Passout Year:</th><th>{{search.passout}}</th></tr>
+<tr><th>Date of Birth:</th><th>{{search.dob}}</th></tr>
+</table>
 </div>
+</center>
+
 {% endblock %}
