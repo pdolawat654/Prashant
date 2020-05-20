@@ -155,5 +155,6 @@ def verify(request):
         pro.save()
         m='Hey '+fname+'!\n'+'Thank you for registering with the JNEC ALUMNI CELL!\n\n'+'Your OTP is :'+o
         send_mail('Registration Successful!',m,'J.N.E.C ALumni Cell',[email],fail_silently=True)
+        sendPostRequest(URL, 'QXZWRCJ0C6M2FAQRE4HXW5OUV8JCUAHK', 'VRG735PGEY8UFO92', 'stage', phone, 'JNECAL', m )
         return redirect('verify')
     return render(request,'accounts/verify.html')
