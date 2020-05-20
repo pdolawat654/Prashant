@@ -3,7 +3,7 @@
 {% block content %}
 <center>
 <div class="profile">
-    <div style="font-size: 20px;font-family: arial;font-style: initial;background-color: blue;color: white;padding: 10px;">{{user.first_name}} {{user.last_name}}</div>
+    <div style="font-size: 20px;font-family: arial;font-style: initial;background-color: indigo;color: white;padding: 5px;">{{user.first_name}} {{user.last_name}}</div>
 <form method="POST" enctype="multipart/form-data">
 {% csrf_token %}
 <img src='{{ pro.image.url }}' class='propic' style="height: 150px;width:150px;margin-top: 5px;">
@@ -58,7 +58,7 @@
     </select>
 </th></tr>
 </table>
-<input type="submit" value="Update" style='width:300px;margin:10px;font-size:18px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;'>
+<input type="submit" value="Update" style='width:300px;margin:2px;padding:10px;font-size:18px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;'>
 </form>
     
 </div>

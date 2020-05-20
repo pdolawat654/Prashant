@@ -4,7 +4,7 @@
 <center>
 
 <div class="profile">
-    <div style="font-size: 20px;font-family: arial;font-style: initial;background-color: blue;color: white;padding: 10px;">{{user.first_name}} {{user.last_name}}</div>
+    <div style="font-size: 20px;font-family: arial;font-style: initial;background-color: indigo;color: white;padding: 5px;">{{user.first_name}} {{user.last_name}}</div>
 <center><img src='{{ pro.image.url }}' class='propic' style="height: 150px;width: 150px;"></center>
 <table>
 <tr><th>Email:</th><th>{{ user.email }}</th></tr>
@@ -14,7 +14,7 @@
 <tr><th>Passout Year:</th><th>{{pro.passout}}</th></tr>
 <tr><th>Date of Birth:</th><th>{{pro.dob}}</th></tr>
 </table>
-<a href="{% url 'uprofile' %}"><input type="submit" style='width:300px;margin:20px;font-size:18px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;' value="Update Profile"></a>
+<a href="{% url 'uprofile' %}"><input type="submit" style='width:300px;margin:10px;font-size:18px;padding:10px;background-color: green;color: white;border: none;border-radius: 25px;font-weight: bold;' value="Update Profile"></a>
 </div>
 </center>
 
